@@ -38,10 +38,12 @@
 #include "laser_filters/angular_bounds_filter.h"
 #include "laser_filters/angular_bounds_filter_in_place.h"
 #include "laser_filters/box_filter.h"
+#include "laser_filters/pointcloud_box_filter.h"
 #include "laser_filters/speckle_filter.h"
-
+#include "laser_filters/pointcloud_passthru.h"
+#include "laser_filters/passthru_filter.h"
 #include <sensor_msgs/msg/laser_scan.hpp>
-
+#include <sensor_msgs/msg/point_cloud2.hpp>
 #include "filters/filter_base.hpp"
 #include <pluginlib/class_list_macros.hpp>  // NOLINT
 
@@ -52,8 +54,11 @@ PLUGINLIB_EXPORT_CLASS(laser_filters::LaserScanRangeFilter, filters::FilterBase<
 PLUGINLIB_EXPORT_CLASS(laser_filters::LaserScanAngularBoundsFilter, filters::FilterBase<sensor_msgs::msg::LaserScan>)
 PLUGINLIB_EXPORT_CLASS(laser_filters::LaserScanAngularBoundsFilterInPlace, filters::FilterBase<sensor_msgs::msg::LaserScan>)
 PLUGINLIB_EXPORT_CLASS(laser_filters::LaserScanFootprintFilter, filters::FilterBase<sensor_msgs::msg::LaserScan>)
+PLUGINLIB_EXPORT_CLASS(laser_filters::LaserScanPassThruFilter, filters::FilterBase<sensor_msgs::msg::LaserScan>)
 PLUGINLIB_EXPORT_CLASS(laser_filters::ScanShadowsFilter, filters::FilterBase<sensor_msgs::msg::LaserScan>)
 PLUGINLIB_EXPORT_CLASS(laser_filters::InterpolationFilter, filters::FilterBase<sensor_msgs::msg::LaserScan>)
 PLUGINLIB_EXPORT_CLASS(laser_filters::LaserScanBoxFilter, filters::FilterBase<sensor_msgs::msg::LaserScan>)
+PLUGINLIB_EXPORT_CLASS(laser_filters::PointCloudBoxFilter, filters::FilterBase<sensor_msgs::msg::PointCloud2>)
 PLUGINLIB_EXPORT_CLASS(laser_filters::LaserScanMaskFilter, filters::FilterBase<sensor_msgs::msg::LaserScan>)
 PLUGINLIB_EXPORT_CLASS(laser_filters::LaserScanSpeckleFilter, filters::FilterBase<sensor_msgs::msg::LaserScan>)
+PLUGINLIB_EXPORT_CLASS(laser_filters::PointCloudPassThruFilter, filters::FilterBase<sensor_msgs::msg::PointCloud2>)

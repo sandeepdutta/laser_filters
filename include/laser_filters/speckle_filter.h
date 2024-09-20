@@ -218,7 +218,7 @@ public:
       default:
         break;
     }
-
+    RCLCPP_INFO(node_->get_logger(), "SpeckleFilter configured");
     return true;
   }
   /////////////////////////////////////////////////////

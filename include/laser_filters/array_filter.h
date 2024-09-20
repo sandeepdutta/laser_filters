@@ -79,6 +79,7 @@ public:
     if (!intensity_filter_->configure(num_ranges_, param_prefix_ + "intensity_filter_chain", logging_interface_, params_interface_))
       return false;
 
+    RCLCPP_INFO(logging_interface_->get_logger(), "LaserArrayFilter successfully configured");
     return true;
   }
 

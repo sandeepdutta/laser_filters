@@ -56,6 +56,7 @@ public:
       min_angle_tan_ = -min_angle_tan_;
     if (max_angle_tan_ > 0.0)
       max_angle_tan_ = -max_angle_tan_;
+    //RCLCPP_INFO(rclcpp::get_logger("ScanShadowDetector"), "min_angle_tan: %f, max_angle_tan: %f", min_angle_tan_, max_angle_tan_);
   }
   bool isShadow(const float r1, const float r2, const float included_angle)
   {

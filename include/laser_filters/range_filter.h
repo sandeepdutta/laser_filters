@@ -75,6 +75,7 @@ public:
     upper_threshold_ = 100000.0;
     getParam("lower_threshold", lower_threshold_);
     getParam("upper_threshold", upper_threshold_) ;
+    RCLCPP_INFO(logging_interface_->get_logger(), "LaserScanRangeFilter: Lower threshold: %.3f, Upper threshold: %.3f", lower_threshold_, upper_threshold_ );
     return true;
   }
 

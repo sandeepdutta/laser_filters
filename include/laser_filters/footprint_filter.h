@@ -71,6 +71,7 @@ public:
       RCLCPP_ERROR(get_logger(), "LaserScanFootprintFilter needs inscribed_radius to be set");
       return false;
     }
+    RCLCPP_INFO(get_logger(), "LaserScanFootprintFilter will remove points inside the inscribed circle of the robot footprint");
     return true;
   }
 

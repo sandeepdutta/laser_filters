@@ -66,7 +66,7 @@ public:
     getParam("disp_histogram",  disp_hist_) ;
 
     disp_hist_enabled_ = (disp_hist_ == 0) ? false : true;
-
+    RCLCPP_INFO(logging_interface_->get_logger(), "LaserScanIntensityFilter params: [lower_threshold: %.2f upper_threshold: %.2f disp_histogram: %d]", lower_threshold_, upper_threshold_, disp_hist_);
     return true;
   }
 

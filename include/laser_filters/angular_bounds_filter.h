@@ -58,6 +58,8 @@ namespace laser_filters
         {
           RCLCPP_ERROR(logging_interface_->get_logger(), "Both the lower_angle and upper_angle parameters must be set to use this filter.");
           return false;
+        } else {
+          RCLCPP_INFO(logging_interface_->get_logger(), "LaserScanAngularBoundsFilter params: [lower_angle: %.2f upper_angle: %.2f]", lower_angle_, upper_angle_);
         }
 
         return true;

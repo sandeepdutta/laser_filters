@@ -85,7 +85,10 @@ public:
           "LaserScanMaskFilter: masks is not defined in the config.");
       return false;
     }
-
+    RCLCPP_INFO(
+        logging_interface_->get_logger(),
+        "LaserScanMaskFilter: %d masks are loaded.",
+        (int)masks_.size());
     return true;
   }
 

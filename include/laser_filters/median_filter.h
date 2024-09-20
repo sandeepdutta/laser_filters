@@ -81,6 +81,7 @@ namespace laser_filters
       intensity_filter_ = new filters::MultiChannelFilterChain<float>("float");
       if (!intensity_filter_->configure(num_ranges_, "internal_filter", logging_interface_, params_interface_))
         return false;
+      RCLCPP_INFO( logging_interface_->get_logger(), "LaserMedianFilter successfully configured");
       return true;
     };
 

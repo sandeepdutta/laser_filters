@@ -120,6 +120,8 @@ class LaserScanBoxFilter : public filters::FilterBase<sensor_msgs::msg::LaserSca
         RCLCPP_ERROR(get_logger(), "min_z is not set!");
       }
 
+      RCLCPP_INFO(get_logger(), "Configured box filter with: box_frame: %s, min: (%f, %f, %f), max: (%f, %f, %f), invert: %s",
+                  box_frame_.c_str(), min_.x(), min_.y(), min_.z(), max_.x(), max_.y(), max_.z(), invert ? "true" : "false");
       return box_frame_set && x_max_set && y_max_set && z_max_set &&
              x_min_set && y_min_set && z_min_set;
     }

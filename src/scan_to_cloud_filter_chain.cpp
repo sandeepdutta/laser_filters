@@ -89,7 +89,7 @@ public:
                                                          laser_max_range_(DBL_MAX),
                                                          buffer_(nh_->get_clock()),
                                                          tf_(buffer_),
-                                                         sub_(nh_, "scan", rmw_qos_profile_sensor_data),
+                                                         sub_(nh_, "scan", rmw_qos_profile_services_default),
                                                          filter_(sub_, buffer_, "", 50, nh_),
                                                          cloud_filter_chain_("sensor_msgs::msg::PointCloud2"),
                                                          scan_filter_chain_("sensor_msgs::msg::LaserScan")
@@ -110,10 +110,14 @@ public:
     nh_->get_parameter_or("cloud_topic", cloud_topic_, std::string("tilt_laser_cloud_filtered"));
 
 
+    cloud_filter_chain_.configure("cloud_filter_chain", nh_->get_node_logging_interface(), nh_->get_node_parameters_interface());
+    RCLCPP_INFO(nh_->get_logger(), "cloud_filter_chain configured");
+    scan_filter_chain_.configure("scan_filter_chain", nh_->get_node_logging_interface(), nh_->get_node_parameters_interface());    
+    RCLCPP_INFO(nh_->get_logger(), "scan_filter_chain configured");      
     filter_.setTargetFrame(target_frame_);
     filter_.registerCallback(std::bind(&ScanToCloudFilterChain::scanCallback, this, std::placeholders::_1));
     filter_.setTolerance(std::chrono::duration<double>(tf_tolerance_));
-                                                           
+                                                 
     auto timer_interface = std::make_shared<tf2_ros::CreateTimerROS>(
       nh_->get_node_base_interface(),
       nh_->get_node_timers_interface());
@@ -125,9 +129,7 @@ public:
 
     cloud_pub_ = nh_->create_publisher<sensor_msgs::msg::PointCloud2>("cloud_filtered", 10);
 
-    cloud_filter_chain_.configure("cloud_filter_chain", nh_->get_node_logging_interface(), nh_->get_node_parameters_interface());
 
-    scan_filter_chain_.configure("scan_filter_chain", nh_->get_node_logging_interface(), nh_->get_node_parameters_interface());
   }
 
   ////////////////////////////////////////////////////////////////////////////////

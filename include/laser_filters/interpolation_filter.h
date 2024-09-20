@@ -53,6 +53,7 @@ public:
 
   bool configure()
   {
+    RCLCPP_INFO(logging_interface_->get_logger(), "InterpolationFilter running");
     return true;
   }
 
